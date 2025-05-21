@@ -157,12 +157,12 @@ with col3:
 # Show CFG
 if st.session_state.view_mode == f"cfg_{regex_key}":
     st.subheader(f"📘 Context-Free Grammar for {selected_label}")
-    st.image(f"Pictures\cfg_{regex_key}.png", caption=f"CFG for {selected_label}", use_container_width=True)
+    st.image(f"Pictures/cfg_{regex_key}.png", caption=f"CFG for {selected_label}", use_container_width=True)
 
 # Show PDA
 elif st.session_state.view_mode == f"pda_{regex_key}":
     st.subheader(f"📗 Pushdown Automaton for {selected_label}")
-    st.image(f"Pictures\pda_{regex_key}.png", caption=f"PDA for {selected_label}", use_container_width=True)
+    st.image(f"Pictures/pda_{regex_key}.png", caption=f"PDA for {selected_label}", use_container_width=True)
 
 # Show DFA
 elif st.session_state.view_mode == f"dfa_{regex_key}":
