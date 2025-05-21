@@ -114,7 +114,7 @@ def get_dfa_01():
     return DFA(states, alphabet, transitions, start_state, accept_states), transitions, start_state, accept_states
 
 # --- App start ---
-st.title("🧠 DFA / CFG / PDA Visualizer")
+st.title("DFA Simulator")
 
 # Store view state
 if "view_mode" not in st.session_state:
@@ -124,9 +124,20 @@ regex_options = {
     "Regex (a, b)": "ab",
     "Regex (0, 1)": "01"
 }
+
+regex_strings = {
+    "ab": "(ab+ba) (ab+ba)* (aaa+bbb+aba) (a+b)* (bb*) (aa*) (a+b) (aa+bb) (a+b)* (bb+aa+aba+bab) (bb+aa+aba+bab)*",
+    "01": "(111+000+101+001) (1+0)* (11+00)(11+00)* (101+111+000)(101+111+000)*(11+00)(1+0+11) (11*)(00*)(1*+0*+1+0)(1+0)*"
+}
+# ----------------------------------------------------
+
 selected_label = st.selectbox("Choose a regular expression:", list(regex_options.keys()))
 regex_key = regex_options[selected_label]
 
+# --- Display the selected regular expression string ---
+st.text("Regular Expression:") # Label for the regex
+st.markdown(f"`{regex_strings[regex_key]}`") # Display the regex string itself, using markdown for potential escaping
+st.markdown("---")
 # Map view mode depending on choice
 if st.session_state.view_mode.startswith("dfa") and not st.session_state.view_mode.endswith(regex_key):
     st.session_state.view_mode = f"dfa_{regex_key}"
